@@ -4,39 +4,38 @@
 --- DateTime: 23.08.18 22:51
 ---
 
-local RPD = require "scripts/lib/commonClasses"
+local RPD     = require "scripts/lib/commonClasses"
 
-local ai = require "scripts/lib/ai"
+local ai      = require "scripts/lib/ai"
 
 local storage = require "scripts/lib/storage"
 
-local Process = require"scripts/lib/Process"
+local Process = require "scripts/lib/Process"
 
-return ai.init{
+return ai.init {
 
-    act       = function(me, ai, me)
+    act       = function(self, ai, me)
 
-if RPD.Dungeon.level:distance(RPD.Dungeon.hero:getPos(),me:getPos()) < 4 then 
-h = true
-else
-h = false
-end
+        local hPos  = RPD.Dungeon.hero:getPos()
+        local myPos = me:getPos()
 
-if h then
-me:beckon(RPD.Dungeon.hero:getPos())
-else
-me:getSprite():move(me:getPos(),Process.golden_gaurd_pos)
-me:getSprite():idle()
-me:move(Process.golden_gaurd_pos)
-me:spend(1)
---me:beckon(Process.golden_gaurd_pos)
-end
-end,
+        if RPD.Dungeon.level:distance(hPos, myPos) < 4 then
+            me:beckon(hPos)
+        else
+            local mySprite = me:getSprite()
+            if mySprite then
+                mySprite:move(myPos, Process.golden_gaurd_pos)
+                mySprite:idle()
+            end
+            me:move(Process.golden_gaurd_pos)
+            me:spend(1)
+        end
+    end,
 
-    gotDamage = function(me, ai, me, src, dmg)
-end,
+    gotDamage = function(self, ai, me, src, dmg)
+    end,
 
-    status = function(me, ai, me)
+    status    = function(self, ai, me)
         return "атакует"
     end
 }
