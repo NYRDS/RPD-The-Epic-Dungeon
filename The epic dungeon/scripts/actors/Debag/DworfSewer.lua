@@ -18,7 +18,7 @@ local storage = require "scripts/lib/storage"
 return actor.init({
     activate = function()
 if not storage.get("key") then
-Ginerator.CreateLevel("test")
+Ginerator.CreateLevel("SewerLevel")
 end
 storage.put("key",true)
 end,
