@@ -13,7 +13,7 @@ return mob.init({
 spawn = function(me, level)
 RPD.setAi(me,"RatImperator")
 end,
-die = function(enemy, self, cell, dmg)
+die = function(self, cause)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local level = RPD.Dungeon.level

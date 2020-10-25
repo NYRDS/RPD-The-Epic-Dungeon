@@ -17,7 +17,7 @@ Smash
 }
 
 return mob.init{
-    die = function(enemy, self, cell, dmg)
+    die = function(self, cause)
         local level = RPD.Dungeon.level
 local item = RPD.ItemFactory:itemByName("SkeletonKey")
 level:drop(item,self:getPos())

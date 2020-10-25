@@ -18,7 +18,7 @@ return mob.init({
         RPD.affectBuff(enemy, RPD.Buffs.Slow , 10)
         return dmg
     end,
-    die = function(enemy, self, cell, dmg)
+    die = function(self, cause)
 RPD.GameScene:flash(0xFFFFFF)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")

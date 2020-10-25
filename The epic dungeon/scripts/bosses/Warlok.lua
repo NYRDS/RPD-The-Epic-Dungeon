@@ -23,7 +23,7 @@ RPD.placeBlob( RPD.Blobs.Fire, 87, 100)
 RPD.placeBlob( RPD.Blobs.Fire, 120, 100)
  RPD.placeBlob( RPD.Blobs.Fire, 121, 100)
     end,
-die = function(self)
+die = function(self, cause)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local level = RPD.Dungeon.level

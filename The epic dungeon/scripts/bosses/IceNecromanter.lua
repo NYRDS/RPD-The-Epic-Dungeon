@@ -24,7 +24,7 @@ RPD.setAi(self,"IceNecromanter")
 
 RPD.zapEffect(self:getPos(),enemy:getPos(),"Ice")
 end,
-die = function(enemy, self, cell, dmg)
+die = function(self, cause)
 RPD.playSound( "snd_boss.ogg" )
 RPD.GameScene:bossSlain()
 local Music = luajava.bindClass("com.watabou.noosa.audio.Music")

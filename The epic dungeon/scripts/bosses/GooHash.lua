@@ -23,7 +23,7 @@ end
         RPD.affectBuff(enemy, RPD.Buffs.Slow , 10)
         return dmg
     end,
-    die = function(enemy, self, cell, dmg)
+    die = function(self, cause)
 RPD.GameScene:flash(0xFFFFFF)
         local level = RPD.Dungeon.level
 local item = RPD.ItemFactory:itemByName("SkeletonKey")

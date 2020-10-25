@@ -17,7 +17,7 @@ local storage = require "scripts/lib/storage"
 storage.put("keys",false) 
 RPD.setAi(self,"Monstro")
 end,
-die = function(enemy, self, cell, dmg)
+die = function(self, cause)
 --[[
 local storage = require "scripts/lib/storage"
 storage.put("keys",false) 
@@ -31,7 +31,7 @@ maybeMob:damage(100,RPD.Dungeon.hero)
 end
 end
         local Camera = luajava.bindClass("com.watabou.noosa.Camera")
-Camera.main:shake(8,0.7f)
+Camera.main:shake(8,0.7)
 local level = RPD.Dungeon.level
 local item = RPD.ItemFactory:itemByName("SkeletonKey")
 level:drop(item,RPD.Dungeon.hero:getPos())

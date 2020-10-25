@@ -33,12 +33,12 @@ end
 end
 return dmg
 end,
-    die = function(enemy, self, cell, dmg)
+    die = function(self, cause)
 RPD.GameScene:flash(0xFFFFFF)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local Camera = luajava.bindClass("com.watabou.noosa.Camera")
-Camera.main:shake(8,0.7f)
+Camera.main:shake(8,0.7)
 local level = RPD.Dungeon.level
 local item = RPD.ItemFactory:itemByName("SkeletonKey")
 level:drop(item,self:getPos())

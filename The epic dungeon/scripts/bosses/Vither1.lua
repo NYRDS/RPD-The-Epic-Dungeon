@@ -19,7 +19,7 @@ mob.installOnDieCallback(updateLatestDeadMob)
 
 
 return mob.init({
-    die = function(self, mob)
+    die = function(self, cause)
         local latestDeadMob = storage.get(latest_kill_index) or {}
 
         if latestDeadMob.class ~= nil then
@@ -32,7 +32,8 @@ return mob.init({
             if level:cellValid(mobPos) then
                 mob:setPos(mobPos)
                 
-                level:spawnMob(RPD.Mob:makePet(mob,RPD.Dungeon.hero))                self:getSprite():emitter():burst( RPD.Sfx.ShadowParticle.CURSE, 6 )
+                level:spawnMob(RPD.Mob:makePet(mob,RPD.Dungeon.hero))
+                self:getSprite():emitter():burst( RPD.Sfx.ShadowParticle.CURSE, 6 )
                 mob:getSprite():emitter():burst( RPD.Sfx.ShadowParticle.CURSE, 6 )
                 RPD.playSound( "snd_cursed.mp3" )
             end 

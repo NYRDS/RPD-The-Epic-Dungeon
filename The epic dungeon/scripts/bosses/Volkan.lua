@@ -19,7 +19,7 @@ end,
     zapProc = function(self, enemy, dmg) 
             RPD.placeBlob( RPD.Blobs.LiquidFlame, enemy:getPos(), 50)
         end,
-die = function(self, enemy, dmg)
+die = function(self, cause)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local level = RPD.Dungeon.level

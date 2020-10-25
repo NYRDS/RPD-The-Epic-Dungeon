@@ -30,7 +30,7 @@ RPD.zapEffect(self:getPos(), enemy:getPos(), zapEffect[data])
 RPD.affectBuff(enemy, buffs[data], 10)
 return dmg
 end,
-die = function(enemy, self, cell, dmg)
+die = function(self, cause)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local level = RPD.Dungeon.level

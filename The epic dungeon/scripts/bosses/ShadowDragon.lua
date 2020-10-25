@@ -33,7 +33,7 @@ end
 end
 return dmg
 end,
-die = function(self, cause, level)
+die = function(self, cause)
 RPD.GameScene:bossSlain()
 RPD.playSound("snd_boss.mp3")
 local level = RPD.Dungeon.level
