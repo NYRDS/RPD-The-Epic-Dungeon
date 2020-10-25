@@ -268,9 +268,13 @@ RPD.Sfx.CellEmitter:get(dst):burst( RPD.Sfx.ShaftParticle.FACTORY, 5)
 end
 
 elseif wand == "NefritWand" then
-local mobm = RPD.MobFactory:mobByName("IceNefrit")
-mobm:setPos(RPD.Dungeon.level:getEmptyCellNextTo(mob:getPos()))
-RPD.Dungeon.level:spawnMob(mobm)
+
+local mobPos = RPD.Dungeon.level:getEmptyCellNextTo(mob:getPos())
+    if RPD.Dungeon.level:cellValid(mobPos) then
+        local mobm = RPD.MobFactory:mobByName("IceNefrit")
+        mobm:setPos(mobPos)
+        RPD.Dungeon.level:spawnMob(mobm)
+    end
 
 elseif wand == "SummonerWand" then
 RPD.playSound( "snd_meld.mp3" )
