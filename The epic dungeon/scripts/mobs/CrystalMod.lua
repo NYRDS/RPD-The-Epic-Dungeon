@@ -61,7 +61,9 @@ damage = function(me, level)
 RPD.playSound( "CrystalGaurd.ogg" )
 end,
 die = function(self)
-local book = RPD.creteItem(("Wands/"..Wands[a]) ,{level=s})
-RPD.Dungeon.level:drop(book, self:getPos())
+    if Wands[a] then
+        local wand = RPD.creteItem(("Wands/"..Wands[a]) ,{level=s})
+        RPD.Dungeon.level:drop(wand, self:getPos())
+    end
 end
 }
