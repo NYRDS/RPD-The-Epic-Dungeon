@@ -12,13 +12,15 @@ local EPD = require "scripts/lib/dopClasses"
 
 return ai.init{
 
-    act       = function(me, ai, me)
-me:spend(1)
-end,
+    act       = function(self, ai, me)
+        me:spend(1)
+    end,
 
-    gotDamage = function(me, ai, me, src, dmg)
-me:beckon(src:getPos())
-end,
+    gotDamage = function(self, ai, me, src, dmg)
+        if src.getPos then
+            me:beckon(src:getPos())
+        end
+    end,
 
     status = function(me, ai, me)
         return "Спит"
