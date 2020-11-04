@@ -6,15 +6,15 @@
 --
 
 local serpent = require "scripts/lib/serpent"
-local RPD = require "scripts/lib/commonClasses"
-local util = require "scripts/lib/util"
+local RPD     = require "scripts/lib/commonClasses"
+local util    = require "scripts/lib/util"
 
-local wand = {}
+local wand    = {}
 
-wand.__index = wand
+wand.__index  = wand
 
 function wand.actions(self, wand, hero)
-    return {"ВЗМАХНУТЬ"}
+    return { "ВЗМАХНУТЬ" }
 end
 
 function wand.burn(self, wand, cell)
@@ -33,21 +33,21 @@ function wand.onThrow(self, wand, cell)
     wand:dropTo(cell)
 end
 
-function wand.cast(self,wand,lvl)
+function wand.cast(self, wand, lvl)
 end
 
 function wand.cellSelected(self, wand, action, cell)
-if cell ~= nil and action == "ВЗМАХНУТЬ" then
+    if cell ~= nil and action == "ВЗМАХНУТЬ" then
 
-wand:getUser():getSprite():zap(cell)
-local dst = RPD.Ballistica:cast(wand:getUser():getPos(), cell, true, true)
-local lvl = wand:level()
+        wand:getUser():getSprite():zap(cell)
+        local dst = RPD.Ballistica:cast(wand:getUser():getPos(), cell, true, true)
+        local lvl = wand:level()
 
-self.castOnCell(self,wand,cell,dst,lvl)
+        self.castOnCell(self, wand, cell, dst, lvl)
+    end
 end
-end
 
-function wand.castOnCell(self,wand,cell)
+function wand.castOnCell(self, wand, cell)
 end
 
 function wand.activate(self, wand, hero)
@@ -61,8 +61,8 @@ function wand.saveData(self)
 end
 
 function wand.loadData(self, _, str)
-    local _,data = serpent.load(str)
-    self.data = data or {}
+    local _, data = serpent.load(str)
+    self.data     = data or {}
 end
 
 function wand.storeData(self, data)
@@ -89,43 +89,43 @@ function wand.defaultDesc()
 end
 
 function wand.selectType()
-return "none"
+    return "none"
 end
 
 function wand.getMana()
-return 15
+    return 15
 end
 
 function wand.getManaMes()
-return "-- не хватает маны"
+    return "-- не хватает маны"
 end
 
 function wand.execute(self, wand, hero, action)
-local own = self:selectType()
-if action == "ВЗМАХНУТЬ" then
-if own == "cell" then
-mana = self:getMana()
-if mana <= hero:getSkillPoints() then
-RPD.Dungeon.hero:spendSkillPoints(mana)
-else
-RPD.glog(self:getManaMes())
-return
-end
-wand:selectCell("ВЗМАХНУТЬ","Выберите направление взмаха")
-else
-mana = self:getMana()
-if mana <= hero:getSkillPoints() then
-RPD.Dungeon.hero:spendSkillPoints(mana)
-else
-RPD.glog(self:getManaMes())
-return
-end
-self.cast(self,wand,wand:level())
-end
-end
+    local own = self:selectType()
+    if action == "ВЗМАХНУТЬ" then
+        if own == "cell" then
+            mana = self:getMana()
+            if mana <= hero:getSkillPoints() then
+                RPD.Dungeon.hero:spendSkillPoints(mana)
+            else
+                RPD.glog(self:getManaMes())
+                return
+            end
+            wand:selectCell("ВЗМАХНУТЬ", "Выберите направление взмаха")
+        else
+            mana = self:getMana()
+            if mana <= hero:getSkillPoints() then
+                RPD.Dungeon.hero:spendSkillPoints(mana)
+            else
+                RPD.glog(self:getManaMes())
+                return
+            end
+            self.cast(self, wand, wand:level())
+        end
+    end
 end
 
-function wand.itemDesc(self,thisitem)
+function wand.itemDesc(self, thisitem)
     local ret = wand.defaultDesc(thisitem)
     local own = self:desc(thisitem)
 
@@ -135,7 +135,7 @@ function wand.itemDesc(self,thisitem)
 
     self.data = own.data or {}
 
-    for k,v in pairs(own) do
+    for k, v in pairs(own) do
         ret[k] = v
     end
 

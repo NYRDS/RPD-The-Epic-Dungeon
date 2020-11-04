@@ -23,12 +23,14 @@ return ai.init {
             me:beckon(hPos)
         else
             local mySprite = me:getSprite()
-            if mySprite then
-                mySprite:move(myPos, Process.golden_gaurd_pos)
-                mySprite:idle()
+            if Process.golden_gaurd_pos then
+                if mySprite then
+                    mySprite:move(myPos, Process.golden_gaurd_pos)
+                    mySprite:idle()
+                end
+                me:move(Process.golden_gaurd_pos)
+                me:spend(1)
             end
-            me:move(Process.golden_gaurd_pos)
-            me:spend(1)
         end
     end,
 

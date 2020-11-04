@@ -5,20 +5,20 @@
 -- This file is part of Remixed Pixel Dungeon.
 --
 
-local RPD = require "scripts/lib/commonClasses"
+local RPD     = require "scripts/lib/commonClasses"
 
-local mob = require"scripts/lib/mob"
+local mob     = require "scripts/lib/mob"
 
-local Process = require"scripts/lib/Process"
+local Process = require "scripts/lib/Process"
 
-return mob.init({ 
-    spawn = function(me, level)
-Process.golden_gaurd_pos = me:getPos()
-RPD.setAi(me,"GoldenGaurd")
-    end,
-    move = function(me)
-RPD.setAi(me,"GoldenGaurd")
-    end
-})
+return mob.init({
+                    spawn = function(me, level)
+                        Process.golden_gaurd_pos = me:getPos()
+                        RPD.setAi(me, "GoldenGaurd")
+                    end,
+                    move  = function(me)
+                        RPD.setAi(me, "GoldenGaurd")
+                    end
+                })
 
 
