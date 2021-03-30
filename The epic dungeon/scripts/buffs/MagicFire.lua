@@ -17,7 +17,7 @@ return buff.init{
     end,
 attachTo = function(self, buff, target)
 RPD.permanentBuff(buff.target,RPD.Buffs.Light)
-buff.target:getSprite():emitter():start(RPD.Sfx.ElmoParticle.FACTORY, 0.08);
+--buff.target:getSprite():emitter():start(RPD.Sfx.ElmoParticle.FACTORY, 0.08);
 return true
     end,
     detach = function(self, buff)
