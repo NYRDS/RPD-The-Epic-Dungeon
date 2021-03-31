@@ -1,5 +1,5 @@
 #!/bin/bash
 
-git archive -o The_epic_dungeon.zip --prefix='The epic dungeon/' HEAD
+git archive -o The_epic_dungeon.zip HEAD
 cp -f The_epic_dungeon.zip ../NYRDS/ru
 
