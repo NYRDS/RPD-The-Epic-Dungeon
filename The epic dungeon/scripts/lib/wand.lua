@@ -56,6 +56,10 @@ end
 function wand.deactivate(self, wand, hero)
 end
 
+function wand.act(self, item)
+    wand:deactivateActor()
+end
+
 function wand.saveData(self)
     return serpent.dump(self.data or {})
 end
